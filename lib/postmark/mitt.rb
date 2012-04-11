@@ -42,11 +42,11 @@ module Postmark
     end
     
     def to_email
-      source["ToFull"]["Email"]
+      source["ToFull"][0]["Email"]
     end
     
     def to_name
-      source["ToFull"]["Name"]    
+      source["ToFull"][0]["Name"]    
     end
 
     def bcc
@@ -58,11 +58,11 @@ module Postmark
     end
 
     def cc_email
-      source["CcFull"]["Email"]
+      source["CcFull"][0]["Email"]
     end
 
     def cc_email
-      source["CcFull"]["Name"]
+      source["CcFull"][0]["Name"]
     end
 
     def reply_to

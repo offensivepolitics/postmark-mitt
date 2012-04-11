@@ -16,27 +16,37 @@ module Postmark
     end
 
     def from
-      source["From"].gsub('"', '')
-    end
+        source["From"].gsub('"', '')
+    end    
 
     def from_email
-      if match = from.match(/^.+<(.+)>$/)
-        match[1].strip
-      else
-        from
-      end
+      source["FromFull"]["Email"]
+      #if match = from.match(/^.+<(.+)>$/)
+      #  match[1].strip
+      #else
+      #  from
+      #end
     end
 
     def from_name
-      if match = from.match(/(^.+)<.+>$/)
-        match[1].strip
-      else
-        from
-      end
+      #if match = from.match(/(^.+)<.+>$/)
+      #  match[1].strip
+      #else
+      #  from
+      #end
+      source["FromFull"]["Name"]      
     end
 
     def to
       source["To"]
+    end
+    
+    def to_email
+      source["ToFull"]["Email"]
+    end
+    
+    def to_name
+      source["ToFull"]["Name"]    
     end
 
     def bcc
@@ -45,6 +55,14 @@ module Postmark
 
     def cc
       source["Cc"]
+    end
+
+    def cc_email
+      source["CcFull"]["Email"]
+    end
+
+    def cc_email
+      source["CcFull"]["Name"]
     end
 
     def reply_to
